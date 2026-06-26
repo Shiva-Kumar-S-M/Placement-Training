@@ -1,4 +1,5 @@
 import pandas as pd
+# pyrefly: ignore [missing-import]
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
@@ -26,3 +27,35 @@ median_age = df['Age'].median()
 df['Age'] = df['Age'].fillna(median_age)
 print(median_age)
 
+median_spending=df['Spending'].median()
+df['Spending'] = df['Spending'].fillna(median_spending)
+print(median_spending)
+
+mean_age=df['Age'].mean()
+df['Age']=df['Age'].fillna(mean_age)
+print(mean_age) 
+
+plt.figure(figsize=(8,6))
+df['Spending'].hist(bins=18,color='skyblue',edgecolor='black')
+plt.title('Spending Distribution')
+plt.xlabel('Spending Amount')
+plt.ylabel('Number of customers')
+plt.show()
+
+
+correlation=df.corr(numeric_only=True)
+
+print(correlation)
+
+
+print("Plotting correlation Heatmap")
+
+plt.figure(figsize=(10,8))
+sns.heatmap(correlation,annot=True,cmap='coolwarm',linewidths=0.5)
+plt.title('Correlation Heatmap')
+plt.show()
+
+
+print("Find the outliers in age ")
+outliers=df[df['Age']>100]
+print(outliers)

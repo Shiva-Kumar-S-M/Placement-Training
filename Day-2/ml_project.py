@@ -1,3 +1,4 @@
+# pyrefly: ignore [missing-import]
 import numpy as np 
 import pandas as pd 
 import matplotlib.pyplot as plt  
@@ -9,6 +10,7 @@ from sklearn.linear_model import LinearRegression
 import os
 
 try:
+    # pyrefly: ignore [missing-import]
     from category_encoders import TargetEncoder 
 except ImportError:
         TargetEncoder=None

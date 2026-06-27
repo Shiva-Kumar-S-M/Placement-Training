@@ -30,7 +30,7 @@ def main():
     print(f"Dataset loaded successfully. Rows {df.shape[0]},Features: {df.shape[1]} \n") 
 
     print("Handling missing Data:")
-    print("Artificially deleting some Hits (h) data to demonstrate ")
+    print("Artificially deleting some Hits (H) data to demonstrate ")
 
     df.loc[0.25,'H']=np.nan 
 
@@ -38,6 +38,12 @@ def main():
     df['H']=imputer.fit_transform(df[['H']]) 
 
     print(f"Imputation complete.'Hits' (H) now has {df['H'].isnull().sum()}")
+
+
+    print("Evaluating the skewness of the Runs(R) distribution.....")
+
+    df['LogRuns']=np.log1p(df['R']) 
+
     
 if __name__=="__main__":
     main()

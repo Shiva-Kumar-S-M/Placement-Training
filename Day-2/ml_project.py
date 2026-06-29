@@ -3,6 +3,7 @@ from sklearn.feature_selection import mutual_info_regression
 from sklearn.feature_selection import SelectKBest
 from sklearn.model_selection import train_test_split
 import pandas as pd
+# pyrefly: ignore [missing-import]
 import numpy as np
 import os
 
@@ -10,6 +11,7 @@ from sklearn.impute import SimpleImputer
 
 # Try importing TargetEncoder
 try:
+    # pyrefly: ignore [missing-import]
     from category_encoders import TargetEncoder
     print("category_encoders imported successfully.")
 except ImportError:

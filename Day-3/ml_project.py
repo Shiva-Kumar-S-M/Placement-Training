@@ -5,11 +5,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer
 
 import pandas as pd
+# pyrefly: ignore [missing-import]
 import numpy as np
 import os
 
 # Try importing TargetEncoder
 try:
+    # pyrefly: ignore [missing-import]
     from category_encoders import TargetEncoder
     print("category_encoders imported successfully.")
 except ImportError:

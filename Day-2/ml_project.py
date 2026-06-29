@@ -1,3 +1,7 @@
+from sklearn.linear_model import LinearRegression
+from sklearn.feature_selection import mutual_info_regression
+from sklearn.feature_selection import SelectKBest
+from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
 import os
@@ -141,6 +145,34 @@ def main():
 
     print(f"\nProcessed dataset saved as '{output_file}'.")
 
+    features_to_test=['R','HR','SO','SB']
+
+    X_features=df[features_to_test].fillna(0)
+
+    y_target=df['W']
+
+    selector=SelectKBest(score_func=mutual_info_regression, k=2)
+    selector.fit(X_features,y_target)
+
+    winnig_features=selector.get_support()
+    best_features=X_features.columns[winnig_features].tolist()
+
+    print(best_features)
+
+    X=df[best_features]
+    y=df['H']
+    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2)
+
+    print(f"Training Data size:{X_train.shape}")
+    print(f"Testing Data size:{X_test.shape}")
+
+    model=LinearRegression()
+    model.fit(X_train,y_train)
+
+    prediction=model.predict(X_test)
+    print("Prediction:",prediction)
+
+    
 
 if __name__ == "__main__":
     main()

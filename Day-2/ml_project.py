@@ -172,6 +172,19 @@ def main():
     prediction=model.predict(X_test)
     print("Prediction:",prediction)
 
+    actual_wins=y_test.head(3).values
+    predicted_wins=prediction[:3]
+
+    for i in range(3):
+        predicted=round(predicted_wins[i])
+        actual=actual_wins[i]
+        differences=abs(actual-predicted)
+
+
+        print(f"Mode Guessed:{predicted}")
+        print(f"Real Answer:{actual_wins}")
+        print(f"Difference:{differences}")
+
     
 
 if __name__ == "__main__":

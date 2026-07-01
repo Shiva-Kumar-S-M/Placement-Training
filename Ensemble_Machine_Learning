@@ -414,11 +414,11 @@
         "print(\"Classification Report:\",classification_report(y_test,y_pred))\n"
       ],
       "metadata": {
-        "id": "iLq80yLNXn_5",
-        "outputId": "4fbf0594-deae-4bd8-93f7-26569a2c48d5",
         "colab": {
           "base_uri": "https://localhost:8080/"
-        }
+        },
+        "id": "iLq80yLNXn_5",
+        "outputId": "4fbf0594-deae-4bd8-93f7-26569a2c48d5"
       },
       "id": "iLq80yLNXn_5",
       "execution_count": 10,

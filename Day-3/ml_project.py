@@ -12,7 +12,7 @@ import os
 # Try importing TargetEncoder
 try:
     # pyrefly: ignore [missing-import]
-    from category_encoders import TargetEncoder
+    ```from category_encoders import TargetEncoder```
     print("category_encoders imported successfully.")
 except ImportError:
     TargetEncoder = None

@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyNbKgQrimml/2LxNl2DcEGl",
+      "authorship_tag": "ABX9TyNu7XLLYjMfuw1RMG3ZirSg",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -212,9 +212,79 @@
     },
     {
       "cell_type": "code",
-      "source": [],
+      "source": [
+        "pip install gensim"
+      ],
       "metadata": {
-        "id": "Hblz_IZbs0IG"
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zC2Z1LijwdHr",
+        "outputId": "0c4b141d-f28f-4e32-d93c-e4dad5df766f"
+      },
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Collecting gensim\n",
+            "  Downloading gensim-4.4.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (8.4 kB)\n",
+            "Requirement already satisfied: numpy>=1.18.5 in /usr/local/lib/python3.12/dist-packages (from gensim) (2.0.2)\n",
+            "Requirement already satisfied: scipy>=1.7.0 in /usr/local/lib/python3.12/dist-packages (from gensim) (1.16.3)\n",
+            "Requirement already satisfied: smart_open>=1.8.1 in /usr/local/lib/python3.12/dist-packages (from gensim) (7.6.1)\n",
+            "Requirement already satisfied: wrapt in /usr/local/lib/python3.12/dist-packages (from smart_open>=1.8.1->gensim) (2.2.2)\n",
+            "Downloading gensim-4.4.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (27.9 MB)\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m27.9/27.9 MB\u001b[0m \u001b[31m40.8 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[?25hInstalling collected packages: gensim\n",
+            "Successfully installed gensim-4.4.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from gensim.models import Word2Vec\n",
+        "sentences=[\"France\",\"Mbappe\"],[\"Halland\",\"Bellingham\"]\n",
+        "model=Word2Vec(sentences,vector_size=20,window=2,min_count=1)\n",
+        "print(model.wv['Mbappe'])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Hblz_IZbs0IG",
+        "outputId": "0e04dbad-e370-4d41-89e0-b1cd2a69d3c8"
+      },
+      "execution_count": 24,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[-0.04801775  0.02503647 -0.04379793 -0.02195913 -0.0001755  -0.00148091\n",
+            " -0.0383062   0.04807372  0.02491029  0.04616572 -0.04078959  0.02247899\n",
+            " -0.02068538  0.00412268  0.0424931  -0.02231088  0.0225875  -0.0339348\n",
+            " -0.01774244  0.04699254]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from sklearn.feature_extraction.text import TfidfVectorizer\n",
+        "from sklearn.linear_model import LogisticRegression\n",
+        "\n",
+        "text=[\"It was neymar's last dance today!\",\"Happy Retirement\"]\n",
+        "vector=TfidfVectorizer()\n",
+        "x=vector.fit_transform(text)\n",
+        "print(x.toarray())\n",
+        "print("
+      ],
+      "metadata": {
+        "id": "T8pLxPzVwba8"
       },
       "execution_count": null,
       "outputs": []

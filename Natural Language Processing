@@ -1,0 +1,223 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNbKgQrimml/2LxNl2DcEGl",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Shiva-Kumar-S-M/Placement-Training/blob/main/Natural%20Language%20Processing\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "hftvVn6SfQOQ",
+        "outputId": "2da1ec53-49e8-4add-ab38-191e655d3a3a"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "NLPSessionisgoingon\n"
+          ]
+        }
+      ],
+      "source": [
+        "import re\n",
+        "text=\"NLP Session is going on!!\"\n",
+        "clean=re.sub(r'[^a-zA-Z]','',text)\n",
+        "print(clean)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "text=\"The Weather is beautiful\"\n",
+        "tokens=text.split()\n",
+        "print(tokens)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "84py0edRkJ_e",
+        "outputId": "51c2e2a5-1bb5-4c83-a17a-86bdaf196bc8"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['The', 'Weather', 'is', 'beautiful']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "from nltk.corpus import stopwords\n",
+        "from nltk.tokenize import word_tokenize\n",
+        "nltk.download(\"punkt_tab\")\n",
+        "nltk.download(\"stopwords\")\n",
+        "text=\"The weather is beautiful\"\n",
+        "tokens=word_tokenize(text)\n",
+        "filtered=[word for word in tokens if word.lower() not in stopwords.words(\"english\")]\n",
+        "print(filtered)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "dDVSwA67lj8N",
+        "outputId": "89267fab-a489-4021-fda5-7c0bbba12c81"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['weather', 'beautiful']\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package punkt_tab to /root/nltk_data...\n",
+            "[nltk_data]   Package punkt_tab is already up-to-date!\n",
+            "[nltk_data] Downloading package stopwords to /root/nltk_data...\n",
+            "[nltk_data]   Package stopwords is already up-to-date!\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk.stem import PorterStemmer\n",
+        "stemmer=PorterStemmer()\n",
+        "words=['played','running']\n",
+        "for words in words:\n",
+        "  print(stemmer.stem(words))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_tC1msNYmtpr",
+        "outputId": "333a0e75-addb-4954-f97d-e2e5a35432b0"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "play\n",
+            "run\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk.stem import WordNetLemmatizer\n",
+        "nltk.download(\"wordnet\")\n",
+        "lemmatizer=WordNetLemmatizer()\n",
+        "print(lemmatizer.lemmatize(\"running\",pos='v'))\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "lhVU_IwWoYDi",
+        "outputId": "88ab5d62-61b9-4982-bde9-211b71295f6b"
+      },
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "run\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package wordnet to /root/nltk_data...\n",
+            "[nltk_data]   Package wordnet is already up-to-date!\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from sklearn.feature_extraction.text import CountVectorizer\n",
+        "text=[\"It was neymar's last dance today!\",\"Happy Retirement\"]\n",
+        "vector=CountVectorizer()\n",
+        "x=vector.fit_transform(text)\n",
+        "print(x.toarray())\n",
+        "print(vector.get_feature_names_out())\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zei8MREepYX5",
+        "outputId": "c81a10f4-b218-4312-ee8a-fb5f53d0fdc6"
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[1 0 1 1 1 0 1 1]\n",
+            " [0 1 0 0 0 1 0 0]]\n",
+            "['dance' 'happy' 'it' 'last' 'neymar' 'retirement' 'today' 'was']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "Hblz_IZbs0IG"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}

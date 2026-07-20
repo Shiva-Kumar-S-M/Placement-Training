@@ -50,3 +50,40 @@ int main() {
     printf("Last occurrence of %d is at index %d\n", x, last_occurrence(arr, n, x));
     return 0;
 }
+
+
+/* Arrays
+↓
+
+Strings
+↓
+
+Hashing
+↓
+
+Two Pointers
+↓
+
+Sliding Window
+↓
+
+Binary Search
+↓
+
+Linked List
+↓
+
+Stack
+↓
+
+Queue
+↓
+
+Trees
+↓
+
+Graphs
+↓
+
+DP 
+*/

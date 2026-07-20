@@ -87,3 +87,75 @@ Graphs
 
 DP 
 */
+
+/* Important to be know 
+
+Arrays
+
+Know:
+
+Traversal
+Prefix Sum
+Two Pointers
+Sliding Window
+Difference Array
+Hashing
+
+Know:
+
+Dictionary
+Set
+Frequency Count
+
+Questions like:
+
+Two Sum
+Group Anagrams
+Top K Frequent
+
+all build on this.
+
+Strings
+
+Know:
+
+Character Frequency
+Palindrome
+Two Pointer
+Hash Map
+Stack
+
+Know:
+
+Push
+Pop
+Monotonic Stack
+Queue
+
+Know:
+
+BFS
+Sliding Window Maximum
+Linked List
+
+Know:
+
+Slow Fast Pointer
+Reverse
+Merge
+Trees
+
+Know:
+
+DFS
+BFS
+Recursion
+Graphs
+
+Know:
+
+BFS
+DFS
+Union Find*/
+
+
